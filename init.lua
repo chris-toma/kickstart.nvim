@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -257,6 +257,15 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+    -- config = function()
+    --   local gitsigns = require('gitsigns').setup()
+    --   vim.keymap('n', '<leader>hs', gitsigns.stage_hunk)
+    --   vim.keymap('n', '<leader>hr', gitsigns.reset_hunk)
+    --   vim.keymap('n', '<leader>td', gitsigns.toggle_deleted)
+    --
+    --   -- Text object
+    --   vim.keymap({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+    -- end,
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
@@ -612,7 +621,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
+        gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -647,6 +656,7 @@ require('lazy').setup({
       --
       --  You can press `g?` for help in this menu.
       require('mason').setup()
+      require('lspconfig').protols.setup {}
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.

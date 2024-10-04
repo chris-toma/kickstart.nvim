@@ -5,30 +5,7 @@
 return {
   {
     'numToStr/Comment.nvim',
-    opts = {
-      -- add any options here
-    },
-  },
-  -- {
-  --   'nvim-tree/nvim-tree.lua',
-  --   version = '*',
-  --   lazy = false,
-  --   dependencies = {
-  --     'nvim-tree/nvim-web-devicons',
-  --   },
-  --   config = function()
-  --     require('nvim-tree').setup {}
-  --   end,
-  -- },
-  {
-    'xiantang/darcula-dark.nvim',
-    priority = 100, -- Make sure to load this before all the other start plugins.
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-    },
-    config = function()
-      vim.cmd.colorscheme 'darcula-dark'
-    end,
+    opts = {},
   },
   {
     'nvim-telescope/telescope-file-browser.nvim',
@@ -38,20 +15,12 @@ return {
     end,
   },
   {
-    'folke/flash.nvim',
+    'mbbill/undotree',
     config = function()
-      vim.api.nvim_set_hl(0, 'FlashLabel', { bg = '#063970', fg = '#ffffff', bold = true })
+      vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
     end,
-    event = 'VeryLazy',
-    ---@type Flash.Config
-    opts = {},
-  -- stylua: ignore
-  keys = {
-    { "<leader>ss", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-     },
+  },
+  {
+    'github/copilot.vim',
   },
 }
