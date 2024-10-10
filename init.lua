@@ -657,6 +657,18 @@ require('lazy').setup({
       --  You can press `g?` for help in this menu.
       require('mason').setup()
       require('lspconfig').protols.setup {}
+      require('lspconfig').phpactor.setup {
+        root_dir = function(_)
+          return vim.loop.cwd()
+        end,
+        init_options = {
+          ['language_server.diagnostics_on_update'] = false,
+          ['language_server.diagnostics_on_open'] = false,
+          ['language_server.diagnostics_on_save'] = false,
+          ['language_server_phpstan.enabled'] = false,
+          ['language_server_psalm.enabled'] = false,
+        },
+      }
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
