@@ -38,6 +38,7 @@ return {
   },
   {
     'folke/noice.nvim',
+    -- Rreplace the default command line whit noice
     event = 'VeryLazy',
     opts = {
       -- add any options here
@@ -51,7 +52,15 @@ return {
       -- 'rcarriga/nvim-notify',
     },
   },
-  { 'Pocco81/auto-save.nvim' },
+  {
+    '0x00-ketsu/autosave.nvim',
+    config = function()
+      require('autosave').setup {
+        events = { 'BufLeave' },
+        write_all_buffers = true,
+      }
+    end,
+  },
   {
     'm4xshen/autoclose.nvim',
     config = function()

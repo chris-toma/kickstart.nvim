@@ -115,7 +115,7 @@ vim.opt.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+  -- vim.opt.clipboard = 'unnamedplus'
 end)
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -400,6 +400,7 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
+        defaults = { path_display = { 'smart' } },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -422,7 +423,12 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader><leader>', function()
+        builtin.buffers {
+          sort_lastused = true,
+          sort_mru = true,
+        }
+      end, { desc = '[ ] Find existing buffers' })
 
       vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 
@@ -896,7 +902,7 @@ require('lazy').setup({
       --  and try some other statusline plugin
       local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
-      -- statusline.setup { use_icons = vim.g.have_nerd_font }
+      statusline.setup { use_icons = vim.g.have_nerd_font }
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
