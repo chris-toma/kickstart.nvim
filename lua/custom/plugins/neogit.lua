@@ -10,4 +10,5 @@ return {
     'echasnovski/mini.pick', -- optional
   },
   config = true,
+  vim.keymap.set('n', '<Leader>g', ':Neogit<CR>', { silent = true }),
 }
