@@ -11,4 +11,5 @@ return {
   },
   config = true,
   vim.keymap.set('n', '<Leader>g', ':Neogit<CR>', { silent = true }),
+  vim.keymap.set('n', '<Leader>gc', ':Neogit commit<CR>', { silent = true }),
 }
