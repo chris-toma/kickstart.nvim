@@ -457,6 +457,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+      vim.keymap.set('n', '<leader>sch', function()
+        builtin.command_history { prompt_title = 'Command History' }
+      end, { desc = '[S]earch [c]ommand [h]istory' })
     end,
   },
 
