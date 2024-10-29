@@ -400,7 +400,7 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
-        defaults = { path_display = { 'smart' } },
+        defaults = { path_display = { 'truncate' } },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -418,7 +418,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', function()
-        builtin.find_files { hidden = true, no_ignore = true }
+        builtin.find_files(require('telescope.themes').get_dropdown { hidden = true, no_ignore = true })
       end, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
@@ -427,10 +427,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', function()
-        builtin.buffers {
+        builtin.buffers(require('telescope.themes').get_dropdown {
           sort_lastused = true,
           sort_mru = true,
-        }
+        })
       end, { desc = '[ ] Find existing buffers' })
 
       vim.keymap.set('n', '<C-p>', builtin.git_files, {})
@@ -665,19 +665,6 @@ require('lazy').setup({
       --
       --  You can press `g?` for help in this menu.
       require('mason').setup()
-      require('lspconfig').protols.setup {}
-      require('lspconfig').phpactor.setup {
-        root_dir = function(_)
-          return vim.loop.cwd()
-        end,
-        init_options = {
-          ['language_server.diagnostics_on_update'] = false,
-          ['language_server.diagnostics_on_open'] = false,
-          ['language_server.diagnostics_on_save'] = false,
-          ['language_server_phpstan.enabled'] = false,
-          ['language_server_psalm.enabled'] = false,
-        },
-      }
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
