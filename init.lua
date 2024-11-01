@@ -899,6 +899,10 @@ require('lazy').setup({
       -- cursor location to LINE:COLUMN
 
       ---@diagnostic disable-next-line: duplicate-set-field
+      statusline.section_mode = function()
+        return ''
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_lsp = function()
         return ''
       end

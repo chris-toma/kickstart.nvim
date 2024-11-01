@@ -41,7 +41,18 @@ return {
     -- Rreplace the default command line whit noice
     event = 'VeryLazy',
     opts = {
-      -- add any options here
+      messages = {
+        enabled = false,
+        view = 'popup',
+      },
+      popupmenu = {
+        enabled = true, -- enables the Noice popupmenu UI
+        ---@type 'nui'|'cmp'
+        backend = 'nui', -- backend to use to show regular cmdline completions
+        ---@type NoicePopupmenuItemKind|false
+        -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
+        kind_icons = {}, -- set to `false` to disable icons
+      },
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -56,6 +67,7 @@ return {
     '0x00-ketsu/autosave.nvim',
     config = function()
       require('autosave').setup {
+        prompt_message = false,
         events = { 'BufLeave' },
         write_all_buffers = true,
       }
@@ -66,5 +78,8 @@ return {
     config = function()
       require('autoclose').setup {}
     end,
+  },
+  {
+    'tpope/vim-fugitive',
   },
 }
