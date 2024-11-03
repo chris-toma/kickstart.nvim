@@ -1,5 +1,5 @@
 return {
-  'xiantang/darcula-dark.nvim',
+  'chris-toma/darcula-dark.nvim',
   priority = 100, -- Make sure to load this before all the other start plugins.
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
