@@ -81,5 +81,14 @@ return {
   },
   {
     'tpope/vim-fugitive',
+    config = function()
+      vim.keymap.set('n', '<leader>gb', ':Git blame<CR>', { silent = true, desc = '[G]it [b]lame' })
+    end,
+  },
+  {
+    'sindrets/diffview.nvim',
+    config = function()
+      require('diffview').setup {}
+    end,
   },
 }
