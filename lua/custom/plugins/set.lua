@@ -19,10 +19,10 @@ return {
   vim.keymap.set('n', '<leader>rh', ':vertical resize -6<CR>', { noremap = true, silent = true, desc = 'Resize pane left' }),
   vim.keymap.set('n', '<leader>rl', ':vertical resize +6<CR>', { noremap = true, silent = true, desc = 'Resize pane right' }),
   vim.keymap.set('n', '<leader>bda', ':bufdo bd<CR>', { noremap = true, silent = true, desc = 'Close all buffers' }),
-  vim.keymap.set('n', '<leader>bdc', ':bd<CR>', { noremap = true, silent = true, desc = 'Close all buffers' }),
+  vim.keymap.set('n', '<leader>bdc', ':bd<CR>', { noremap = true, silent = true, desc = 'Close current buffer' }),
 
-  vim.keymap.set('n', '<leader>k', '<cmd>cnext<CR>zz'),
-  vim.keymap.set('n', '<leader>j', '<cmd>cprev<CR>zz'),
+  vim.keymap.set('n', '<leader>j', '<cmd>cnext<CR>zz'),
+  vim.keymap.set('n', '<leader>k', '<cmd>cprev<CR>zz'),
   vim.keymap.set('n', 'q', function()
     if vim.bo.buftype == 'quickfix' then
       vim.cmd 'cclose'
