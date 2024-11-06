@@ -333,6 +333,8 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>b', group = '[B]uffers' },
+        { '<leader>bd', group = '[D]elete' },
       },
     },
   },
@@ -400,7 +402,7 @@ require('lazy').setup({
         --   },
         -- },
         -- pickers = {}
-        defaults = { path_display = { 'truncate' } },
+        defaults = { path_display = { 'smart' } },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
